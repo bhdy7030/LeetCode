@@ -7,7 +7,7 @@
 
 class Solution:
     # @param root, a tree node
-    # @return an integer
+    # @return an int
     def maxDepth(self, root):
         if not root:
             return 0
