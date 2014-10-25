@@ -1,0 +1,19 @@
+class Solution:
+    # @param A, a list of integers
+    # @return a boolean
+    def canJump(self, A):
+        if not A:
+            return False
+        
+        lenA = len(A)
+        canReach = 0
+        for i in range(0,lenA):
+            if i<=canReach:
+                canReach = max(canReach,i+A[i])
+                if canReach>=lenA-1:
+                    return True
+            
+            
+        return False
+        
+            
