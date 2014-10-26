@@ -1,0 +1,28 @@
+class Solution:
+    # @param prices, a list of integer
+    # @return an integer
+    def maxProfit(self, prices):
+        length = len(prices)
+        if length == 0: return 0
+         
+        maxProfitForward = []
+        minPrice = prices[0]
+        maxProfit = -1
+        for currPrice in prices:
+            minPrice = min(minPrice, currPrice)
+            maxProfit = max(maxProfit, currPrice - minPrice)
+            maxProfitForward.append(maxProfit)
+         
+        maxProfitBackward = []
+        maxPrice = prices[-1]
+        maxProfit  = -1
+        for currPrice in reversed(prices):
+            maxPrice = max(maxPrice, currPrice)
+            maxProfit = max(maxProfit, maxPrice - currPrice)
+            maxProfitBackward.insert(0, maxProfit)
+         
+        maxProfit = maxProfitForward[-1] # 0 or 1 transaction
+        for i in xrange(length - 1): # 2 transactions
+            maxProfit = max(maxProfit, maxProfitForward[i] + maxProfitBackward[i + 1])
+        return maxProfit
+        
