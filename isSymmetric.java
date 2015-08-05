@@ -13,7 +13,7 @@ But the following is not:
     1
    / \
   2   2
-   \   \
+   \   \ 
    3    3
 
 
